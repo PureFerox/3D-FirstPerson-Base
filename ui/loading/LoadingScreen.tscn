@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqv2v7w5ejvn1"]
+
+[ext_resource type="Script" path="res://ui/loading/ShaderPrecompiler.cs" id="1_blmqu"]
+[ext_resource type="Script" path="res://ui/loading/LoadingScreen.cs" id="1_ceuap"]
+[ext_resource type="PackedScene" uid="uid://ecl2ecfwttva" path="res://world/maps/debug_world/DebugWorld.tscn" id="2_px3cl"]
+[ext_resource type="PackedScene" uid="uid://b455k3fe7n5m4" path="res://ui/hud/HUD.tscn" id="3_lpt00"]
+[ext_resource type="Texture2D" uid="uid://b0wctadpuh34q" path="res://icon.svg" id="5_rd5hv"]
+
+[node name="LoadingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ceuap")
+_defaultWorldScene = ExtResource("2_px3cl")
+_defaultUIScene = ExtResource("3_lpt00")
+
+[node name="ShaderPrecompiler" type="Node" parent="." node_paths=PackedStringArray("_compileNode3D")]
+script = ExtResource("1_blmqu")
+_compileNode3D = NodePath("../CompileNode3D")
+_defaultTexture = ExtResource("5_rd5hv")
+
+[node name="CompileNode3D" type="Node3D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CenterContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "LOADING..."
+
+[connection signal="ScanFilesComplete" from="ShaderPrecompiler" to="ShaderPrecompiler" method="OnScanFilesComplete"]
+[connection signal="ShaderPrecompilationComplete" from="ShaderPrecompiler" to="." method="OnShaderPrecompilationComplete"]

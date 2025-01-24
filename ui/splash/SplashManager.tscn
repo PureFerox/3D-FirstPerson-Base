@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn7bfbp431fu0"]
+
+[ext_resource type="Script" path="res://ui/splash/SplashManager.cs" id="1_ie1xs"]
+[ext_resource type="Texture2D" uid="uid://b6i448e2t5iuo" path="res://assets/textures/Logo (NB).png" id="3_l4hrf"]
+
+[node name="SplashManager" type="Control" node_paths=PackedStringArray("SplashContainer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_ie1xs")
+_inTime = 0.25
+_fadeInTime = 1.0
+_fadeOutTime = 1.0
+_outTime = 0.25
+SplashContainer = NodePath("SplashContainer")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="SplashContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Screen1" type="TextureRect" parent="SplashContainer"]
+layout_mode = 2
+texture = ExtResource("3_l4hrf")

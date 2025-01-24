@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://0togvj66h035"]
+
+[ext_resource type="Script" path="res://ui/reticle/Reticle.cs" id="1_fuadi"]
+
+[node name="Reticle" type="CenterContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_fuadi")
+DOT_RADIUS = 0.0
+DOT_COLOR = Color(1, 1, 1, 1)
+
+[node name="T" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, -5)
+width = 2.0
+
+[node name="B" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 5)
+width = 2.0
+
+[node name="L" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, -5, 0)
+width = 2.0
+
+[node name="R" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 5, 0)
+width = 2.0

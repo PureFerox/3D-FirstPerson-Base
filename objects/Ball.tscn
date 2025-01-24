@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://chocnbqkocw31"]
+
+[ext_resource type="Shader" path="res://shaders/Grid.gdshader" id="1_pi4qo"]
+[ext_resource type="Texture2D" uid="uid://cseuvb306ugai" path="res://assets/textures/grid.jpg" id="2_aswlk"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vbgie"]
+bounce = 0.75
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ykabk"]
+render_priority = 0
+shader = ExtResource("1_pi4qo")
+shader_parameter/albedo = Color(0.737255, 1, 0.211765, 1)
+shader_parameter/point_size = null
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = null
+shader_parameter/metallic = null
+shader_parameter/uv1_blend_sharpness = null
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = null
+shader_parameter/uv2_scale = null
+shader_parameter/uv2_offset = null
+shader_parameter/texture_albedo = ExtResource("2_aswlk")
+
+[sub_resource type="SphereMesh" id="SphereMesh_hj38b"]
+lightmap_size_hint = Vector2i(9, 5)
+material = SubResource("ShaderMaterial_ykabk")
+radius = 0.25
+height = 0.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_c6ptk"]
+
+[node name="Ball" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 7
+mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_vbgie")
+continuous_cd = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_hj38b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_c6ptk")

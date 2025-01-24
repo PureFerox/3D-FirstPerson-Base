@@ -1,0 +1,54 @@
+3D FPS Base:
+	
+	- Scene Controller										X
+	
+	- Main Menu												O
+	
+	- Game Manager											X
+	
+	- Locations												O
+	
+	- Dialogue System										O
+	
+	- Cutscene System										O
+	
+	- NPCs													O
+		- Routines
+			- NPC Objectives?
+	
+	- UI													O
+	
+	- Puzzles												O
+	
+	- Saving and Loading									O
+	
+	- Enemy(s)												O
+	
+	- Health System											O
+	
+	- Sound/Music											O
+	
+	- Settings & Options									O
+	
+	- Quest System											O
+	
+	- Day/Night cycle										O
+	
+	- Player:
+		- Movement
+		- Stats Node?
+	
+	- Inventory System										O
+	
+	- Hit/Hurt Boxes										O
+	
+	- Input Controller
+	
+	- Finite State Machines									O
+	
+	- Interactables											O
+		- Items
+		- Doors
+	
+	- Behaviour Trees										O
+	

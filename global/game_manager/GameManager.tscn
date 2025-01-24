@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnoe3mnud0dv0"]
+
+[ext_resource type="Script" path="res://global/game_manager/GameManager.cs" id="1_7iovo"]
+[ext_resource type="PackedScene" uid="uid://cbilpd5m2fdte" path="res://global/scene_controller/SceneController.tscn" id="2_sclya"]
+[ext_resource type="PackedScene" uid="uid://bn7bfbp431fu0" path="res://ui/splash/SplashManager.tscn" id="2_wx24m"]
+[ext_resource type="PackedScene" uid="uid://dqv2v7w5ejvn1" path="res://ui/loading/LoadingScreen.tscn" id="4_fvi07"]
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_7iovo")
+
+[node name="SceneController" parent="." node_paths=PackedStringArray("World3D", "GUI") instance=ExtResource("2_sclya")]
+World3D = NodePath("../World3D")
+GUI = NodePath("../GUI")
+
+[node name="World3D" type="Node3D" parent="."]
+
+[node name="GUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SplashManager" parent="GUI" instance=ExtResource("2_wx24m")]
+layout_mode = 1
+_defaultUIScene = ExtResource("4_fvi07")
