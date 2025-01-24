@@ -29,6 +29,7 @@ window/size/viewport_height=1080
 window/size/mode=4
 window/size/resizable=false
 window/size/borderless=true
+window/stretch/scale_mode="integer"
 
 [dotnet]
 
@@ -103,3 +104,6 @@ game_crouch={
 [rendering]
 
 scaling_3d/mode=2
+textures/default_filters/texture_mipmap_bias=-0.75
+anti_aliasing/quality/screen_space_aa=1
+anti_aliasing/quality/use_taa=true

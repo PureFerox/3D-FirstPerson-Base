@@ -1,0 +1,7 @@
+# Godot 4+ specific ignores
+.godot/
+
+# Local files
+.mono/
+.vscode/
+3D To Do.txt
