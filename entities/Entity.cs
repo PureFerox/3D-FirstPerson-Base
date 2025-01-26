@@ -2,12 +2,9 @@ using Godot;
 
 public partial class Entity : CharacterBody3D
 {
-	protected enum STATE {
-		MOVE,
-		CROUCH
-	}
-
 	[Export] protected HealthComponent _healthComponent;
+	[Export] protected StateMachineComponent _stateMachineComponent;
+	[Export] protected InventoryComponent _inventory;
 	[Export] protected AnimationPlayer _animPlayer;
 	[Export] protected AnimationTree _animTree;
 

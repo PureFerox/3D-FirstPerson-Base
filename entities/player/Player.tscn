@@ -1,7 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://cyqkly01ue737"]
+[gd_scene load_steps=18 format=3 uid="uid://cyqkly01ue737"]
 
 [ext_resource type="Script" path="res://entities/player/Player.cs" id="1_3r0mb"]
 [ext_resource type="PackedScene" uid="uid://w1r8okttjhxt" path="res://components/input_controller/player_input_controller/PlayerInputController.tscn" id="2_gt8g8"]
+[ext_resource type="PackedScene" uid="uid://bm3yrphchm3fa" path="res://components/state_machine/StateMachineComponent.tscn" id="3_svt6p"]
+[ext_resource type="Script" path="res://entities/player/states/Move.cs" id="4_tugr7"]
+[ext_resource type="Script" path="res://entities/player/states/CrouchMove.cs" id="5_pxnar"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_yggaj"]
 
@@ -255,7 +258,6 @@ animation = &"Crouch"
 animation = &"Idle"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_pun0j"]
-graph_offset = Vector2(-376.636, 38)
 nodes/IdleCrouch/node = SubResource("AnimationNodeBlend2_vylfg")
 nodes/IdleCrouch/position = Vector2(60, 80)
 nodes/crouch-cycle/node = SubResource("AnimationNodeAnimation_h0qy2")
@@ -264,15 +266,15 @@ nodes/idle-cycle/node = SubResource("AnimationNodeAnimation_tebeh")
 nodes/idle-cycle/position = Vector2(-203, 6)
 node_connections = [&"IdleCrouch", 0, &"idle-cycle", &"IdleCrouch", 1, &"crouch-cycle", &"output", 0, &"IdleCrouch"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("Head", "Camera", "_inputController", "_shapeCast", "_animPlayer", "_animTree")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("InputController", "Head", "Camera", "_stateMachineComponent", "_animPlayer", "_animTree")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0455446, -0.0207986, 0.0431519)
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_3r0mb")
+InputController = NodePath("PlayerInputController")
 Head = NodePath("Head")
 Camera = NodePath("Head/Camera")
-_inputController = NodePath("PlayerInputController")
-_shapeCast = NodePath("ShapeCast3D")
+_stateMachineComponent = NodePath("StateMachineComponent")
 _animPlayer = NodePath("AnimationPlayer")
 _animTree = NodePath("AnimationTree")
 metadata/_edit_group_ = true
@@ -304,7 +306,17 @@ current = true
 fov = 70.0
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="Head/Camera"]
-update_mode = 1
+
+[node name="StateMachineComponent" parent="." node_paths=PackedStringArray("_body") instance=ExtResource("3_svt6p")]
+_body = NodePath("..")
+_initialState = NodePath("Move")
+
+[node name="Move" type="Node" parent="StateMachineComponent"]
+script = ExtResource("4_tugr7")
+
+[node name="CrouchMove" type="Node" parent="StateMachineComponent" node_paths=PackedStringArray("_shapeCast")]
+script = ExtResource("5_pxnar")
+_shapeCast = NodePath("../../ShapeCast3D")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

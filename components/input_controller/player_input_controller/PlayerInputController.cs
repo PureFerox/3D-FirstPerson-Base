@@ -25,7 +25,7 @@ public partial class PlayerInputController : InputController
 	public Vector2 InputDir;
 	public bool IsSprinting;
 	public bool IsJumping;
-	public float IsCrouching;
+	public bool IsCrouching;
 	#endregion
 
 	#region Jump
@@ -63,8 +63,7 @@ public partial class PlayerInputController : InputController
     {
         base._UnhandledInput(@event);
 
-		if (Input.MouseMode == Input.MouseModeEnum.Captured && @event is InputEventMouseMotion mouseInput)
-		{
+		if (Input.MouseMode == Input.MouseModeEnum.Captured && @event is InputEventMouseMotion mouseInput) {
 			RotationInput = -mouseInput.Relative.X * MouseSensitivity;
 			TiltInput = -mouseInput.Relative.Y * MouseSensitivity;
 		}
@@ -82,11 +81,11 @@ public partial class PlayerInputController : InputController
 	public void GetInput() {
 		IsSprinting = Input.IsActionPressed("game_sprint");
 		IsJumping = Input.IsActionJustPressed("game_jump");
-		IsCrouching = Input.GetActionStrength("game_crouch");
+		IsCrouching = Input.IsActionPressed("game_crouch");
 
 		InputDir = Vector2.Zero;
-		InputDir.X = Input.GetAxis("game_strafe_left", "game_strafe_right");
 		InputDir.Y = Input.GetAxis("game_forward", "game_backward");
+		InputDir.X = Input.GetAxis("game_strafe_left", "game_strafe_right");
 		InputDir = InputDir.Normalized();
 	}
 }

@@ -36,7 +36,8 @@
 	
 	- Player:
 		- Movement
-		- Stats Node?
+		- Stats Node
+		- AnimationHandler Node
 	
 	- Inventory System										O
 	
@@ -44,7 +45,7 @@
 	
 	- Input Controller
 	
-	- Finite State Machines									O
+	- Finite State Machines									X
 	
 	- Interactables											O
 		- Items
