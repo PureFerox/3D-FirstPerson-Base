@@ -4,4 +4,4 @@
 
 [node name="InventoryComponent" type="Node"]
 script = ExtResource("1_y8pif")
-_items = Array[Resource]([])
+_items = Array[Resource]([null, null, null, null, null, null, null, null, null, null])

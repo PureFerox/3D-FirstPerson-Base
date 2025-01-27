@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bh6c40bmgnopo"]
+
+[ext_resource type="PackedScene" uid="uid://b2mfjcfysy8vq" path="res://items/lantern/assets/lantern.glb" id="1_5hhiq"]
+[ext_resource type="Script" path="res://items/Item.cs" id="1_e7nxs"]
+
+[resource]
+script = ExtResource("1_e7nxs")
+Name = "Lantern"
+Model = ExtResource("1_5hhiq")
